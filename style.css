@@ -1,0 +1,50 @@
+sorry forgot .logo {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+
+}
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: #060485;
+    color:palegreen; 
+}
+.navbar {
+    height: 70px;
+    background-color:#9392a5;
+    display: flex;
+    align-items: center;            
+    padding: 0p   , 50 px;
+position: sticky;
+top:0;
+z-index: 1000;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}               
+/*logo*/  
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-right: 60px;
+}                      
+
+/*nav links*/
+nav {
+    display : flex;
+    gap: 30px;
+}
+nav a { text-decoration: none;
+    color:blanchedalmond;
+font-size: 15px;
+font-weight: 600;
+transition: 0.2s;
+}
+nav a {
+    color: powderblue;
+}
+
+
+
