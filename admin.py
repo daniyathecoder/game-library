@@ -115,3 +115,40 @@ async def edit_game(
         connection.commit()
         connection.close()
         return{"message":"Game updated successfully"}
+
+@router.patch("/games/{game_id}?publish")
+def change_publish_staatus(game_id : int,published: bool,admin_id : int = Depends(require_admin)):
+    connection = get_database()
+    game = connection.execute("SELECT id FROM games WHERE id = ?",(game_id,)).fetchone()
+    if not game:
+        connection.close()
+        raise HTTPException(status_code=404,detail="Game not found.")
+    connection.execute("""UPDATE games SET published = ?,updated_st ?
+    WHERE id = ?
+    """,(int(published),datetime.utcnow().isoformat(),game_id))
+    connection.commit()
+    connection.close()
+    return{"message":"PUBLISH status updated","published" : published}
+@router.delete("/games/{game_id}")
+def delete_game(game_id:int,admin_id :int=Depends(require_admin)):
+    connection = get_database()
+    game = connection.execute("SELECT id FROM games WHERE id = ?",(game_id,)).fetchone()
+    if not game:
+       connection.close()
+       raise HTTPException(status_code=404,detail="Game not Found.")
+    connection.execute("DELETE FROM games WHERE id = ?",(game_id,))
+    connection.commit()
+    connection.close()
+    return{"message": "Game deleted successfully"}
+
+@router.put("/content/{content_key}")
+def update_content(content_key : str,content_value: str=Form(...),
+                   admin_id: int = Depends(require_admin)):
+    connection = get_database()
+    connection.execute("""
+    INSRT INTO site_content(content_key,content_value)Values(?,?) ON CONFLICT(content_key) DO UPDATE SET 
+    content_value = excluded.content_value""",(content_key,content_value))
+
+    connection.commit()
+    connection.close()
+    return{"message": "Website content updated"}
