@@ -38,6 +38,36 @@ async function loadAdminGames(){
         item.style.marginBottom = "15px";
         item.style.background = "#171f32";
         item.style.borderRadius ="12px";
+        item.innerHTML = `
+           <h3>
+              ${games.name}
+            </h3>
+            <p>
+               Category:
+               ${game.category}
+            </p>
+            <p> 
+               Plays:
+               ${game.play_count}
+            </p>
+            <p> 
+               Status:
+               ${ game.published
+                ? " Published"
+                :" Unpublished"}
+            </p>
+            <br>
+            <button onclick="togglePublish(${game.id},
+            ${!game.published})">
+               ${game.published? "Unpublish"
+                : "Publish"}
+            </button>
+            <button on click="deleteGame(${game.id})">
+               Delete
+            </button>
+
+        `;
+        container.appendChild(item);
 
     });
 }
@@ -69,4 +99,30 @@ document
         loadAdminGames();
 
     }
-   );
+);
+
+async function loadWebsiteContent(){
+    const response = await fetch("/api/content");
+    const data = await response.json();
+    document.getElementById("hero-title").value = data.hero_title || "";
+    document.getElementById("hero-subtitle").value = data.hero_subtitle || "";
+    document.getElementById("announcement").value = data.announcement || "";
+    document.getElementById("about-text").value = about-text || "";
+}
+
+
+async function saveSingleContent(key,value){
+    const form = new FormData();
+    form.append("content_value",value);
+    return fetch(`/api/admin/content/${kay}`,{method: "PUT",body: form});
+}
+
+async function saveContent(){
+    await saveSingleContent("hero_title",document.getElementById("hero-title").value);
+    await saveSingleContent("hero_subtitle",document.getElementById("hero-subtitle").value);
+    await saveSingleContent("announcement",document.getElementById("announcement").value);
+    await saveSingleContent("about-text",document.getElementById("about-text").value);
+    alert("Website text Updated!");
+}
+
+checkLogin();
