@@ -41,3 +41,32 @@ async function loadAdminGames(){
 
     });
 }
+
+async function togglePublish(id,published){
+    const response = await fetch(`/api/admin/games/${id}/publish?published = ${published}`,{method:"PATCH"});
+    if (response.ok){ loadAdminGames();}else{alert("Unable to cghange status");}}
+
+async function deleteGame(id) { const confirmed = confirm("Delete this game permanently?");
+    if(!confirmed) return;
+    const response = await fetch(`/api/admin/games/${id}`,{method:"DELETE"});
+    if (response.ok) { loadAdminGames();}else{alert("Could not delete game.");}}
+
+
+function showAddGame(){document.getElementById("game-form").style.display = "block";}
+
+document
+   .getElementById("add-game-form")
+   .addEventListener("submit",
+    async function(event) { 
+        event.preventDefault();
+        const form = new FormData(this);
+        const response = await fetch("/api/admin/games",{method: "POST",body: form});
+        const data = await response.json();
+        if (!response.pk){alert(data.detail);return;}
+        alert("Game added successfully!");
+        this.requestFullscreen();
+        document.getElementById("game-form").style.display = "none";
+        loadAdminGames();
+
+    }
+   );
