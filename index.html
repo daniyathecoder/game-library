@@ -13,7 +13,7 @@
             TREASURE BOX
         </div>
         <nav> 
-            <a href="#"></a>
+    
             <a href="#home">Home</a>
 
             <a href="#games">
@@ -103,9 +103,9 @@
 
                     <div class="game-info">
                 
-                        <a href="https://rameesha-maker.github.io/ERA-BREAKER/" 
-                        target="_blank"  
-                        class="play-erabreaker" 
+                        <a href="#" 
+                        class="https://rameesha-maker.github.io/ERA-BREAKER/"
+                        data-game="era"
                         > <h3>
                          ERA BREAKER
                     </h3>
@@ -126,9 +126,9 @@
                     </div> 
                     <div class="game-info"> 
                         
-                              <a href="https://daniyathecoder.github.io/fireboy-and-watergirl/" 
-                              target="_blank"
-                               class="play-fireboy">
+                              <a href="#"
+                              class="https://daniyathecoder.github.io/fireboy-and-watergirl/" 
+                              data-game="fireboy">
                                <h3>
 Fireboy & Watergirl
                                </h3>  </a>
@@ -145,5 +145,43 @@ Fireboy & Watergirl
 
        </main>
 <script src="script.js"></script>
+<!--treasure chest popup-->
+<div   class="treasure-overlay" id="treasureOverlay">
+    <div class="treasure-popup">
+        <!--close buttttton-->
+        <button class="treasure-close" id="treasureChest">✘</button>
+
+        <!--chest-->
+        <div class="treasure-chest" id="treasureChest">
+
+            <!--lid-->
+            <div class="chest-lid">
+                
+                <div class="chest-lock">
+                   🔒 
+                </div>
+            </div>
+            <!--body-->
+            <div class="chest-body" >
+                <div class="chest-stripe"></div> </div>
+        </div>
+        <!--text-->
+        <div class="treasure-text">
+            <h2 id="treasureTItle">TREASURE FOUND!
+            </h2>
+
+            <p id="treasureMessage" >
+                Touch the lock to open it.
+            </p>
+        </div>
+        <!--play button-->
+        <a id="treasurePlay"
+        class="treasure-play"
+        href="#"
+        target="_blank">
+    PLAY GAME
+</a>
+    </div>
+</div>   
     </body>
 </html>
