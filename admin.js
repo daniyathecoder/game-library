@@ -38,6 +38,36 @@ async function loadAdminGames(){
         item.style.marginBottom = "15px";
         item.style.background = "#171f32";
         item.style.borderRadius ="12px";
+        item.innerHTML = `
+           <h3>
+              ${games.name}
+            </h3>
+            <p>
+               Category:
+               ${game.category}
+            </p>
+            <p> 
+               Plays:
+               ${game.play_count}
+            </p>
+            <p> 
+               Status:
+               ${ game.published
+                ? " Published"
+                :" Unpublished"}
+            </p>
+            <br>
+            <button onclick="togglePublish(${game.id},
+            ${!game.published})">
+               ${game.published? "Unpublish"
+                : "Publish"}
+            </button>
+            <button on click="deleteGame(${game.id})">
+               Delete
+            </button>
+
+        `;
+        container.appendChild(item);
 
     });
 }
