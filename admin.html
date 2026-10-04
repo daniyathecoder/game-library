@@ -105,6 +105,79 @@
     </section>
 
     <!-- ADD GAMEEE-->
+    <section
+        id="game-form"
+        style="display:none"
+    >
+       <h2>Add New Game</h2>
+       <br>
+       <form
+          id="add-game-form"
+       >
+          <input
+             name="name"
+             placeholder="Game name"
+             required
+           >
+           <br><br>
+
+           <textarea
+              name="description"
+              placeholder="Description"
+              required
+           ></textarea>
+           <br><br>
+           <input
+              name="category"
+              placeholder="Category"
+              required
+           >
+           <br><br>
+           <input
+              name="playable_url"
+              placeholder="Playable URL"
+              required
+           >
+           <br><br>
+           <input
+              name="creator"
+              placeholder="Creator / Team"
+              required
+           >
+           <br><br>
+
+           <label>
+               Thumbnail
+           </label>
+           <input
+              name="thumbnail"
+              type="file"
+              accept=".png,.jpg..jpeg,.webp"
+           >
+           <br><br>
+          <label>
+              <input
+                  name="published"
+                  type="checkbox"
+               >
+               Publish immediately
+           </label>
+           <br><br>
+           <label>
+               <input
+                  name="featured"
+                  type="checkbox"
+               >
+               Featured game
+           </label>
+           <br><br>
+           <button 
+              class="primart-button"
+              type="'submit"
+           ></button>
+       </form>
+    </section>
 </main>
+<script src="/assets/admin.js"></script>
 </body>
 </html>
