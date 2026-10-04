@@ -1,6 +1,7 @@
 from pathlib import Path
 from fastapi import FastAPI,Form,HTTPException,Request
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
 from database import init_database,get_database

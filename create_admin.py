@@ -7,12 +7,14 @@ def main():
   print("Game Platfrm admin creator")
 
   username = input ("Admin username : ").strip()
-  password = getpass.getpass("Admin password: ")
+  password = getpass.getpass("Admin password: ").strip()
   if not username or not password:
-    print ("Username and poassword cannot be empty. ")
+    print ("Username and password cannot be empty. ")
     return
   connection = get_database()
-  existing = connection.execute("SELECT id FROM admins WHERE username = ? ",(username,)).fetchone()
+  existing = connection.execute("SELECT id FROM admins WHERE username = ? "
+                                ,(username,)
+                                ).fetchone()
   if existing:
     print("That Username already exists. Try a different username.")
     connection.close()

@@ -13,30 +13,41 @@ def init_database():
     cursor = connection.cursor()
 
     #Game Table
-    cursor.execute(""" CREATE TABLE IF NOT EXISTS
-    games(id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    slug TEXT UNIQUE NOT NULL,
-    thumbnail_url TEXT,
-    category TEXT NOT NULL,
-    playable_url TEXT NOT NULL,
-    github_url TEXT,
-    category TEXT NOT NULL,
-    date_added TEXT NOT NULL,
-    published INTEGER DEFAULT 0,
-    featured INTEGER DEFAULT 0,
-    updated at TEXT NOT NULL)""")
+    cursor.execute(""" 
+    CREATE TABLE IF NOT EXISTS
+    games(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        slug TEXT UNIQUE NOT NULL,
+        thumbnail_url TEXT,
+        category TEXT NOT NULL,
+        playable_url TEXT NOT NULL,
+        github_url TEXT,
+        creator TEXT NOT NULL,
+        date_added TEXT NOT NULL,
+        published INTEGER DEFAULT 0,
+        featured INTEGER DEFAULT 0,
+        play_count INTEGER DEFAULT 0,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL)
+        """)
 
     #ADMIN USRS
-    cursor.execute("""CREATE TABLE IF NOT EXISTS
-    admin(id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE NOT NULL,
-    password_hash TEXT NOT NULL)""")
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS
+    admins(
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       username TEXT UNIQUE NOT NULL,
+       password_hash TEXT NOT NULL) 
+       """)
 
     #WEBSITE'S EDITABLE CONTEMNT
-    cursor.execute("""CREATE TABLE IF NOT EXIDTS
-    site_content(content_key TEXT PRIMARY KEY,
-    content_value TEXT NOT NULL)""")
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS
+    site_content(
+       content_key TEXT PRIMARY KEY,
+       content_value TEXT NOT NULL)
+       """)
 
     #default website content 
     default_content = {
@@ -46,9 +57,11 @@ def init_database():
     "about_text": "A collection of games built by two creative people: Daniya and Rameesha!!!"
     }
     for key,value in default_content.items():
-        cursor.execute("""INSERT OR IGNORE INTO 
+        cursor.execute("""
+        INSERT OR IGNORE INTO 
         site_content(content_key,content_value)
-        VALUES(?,?)""",(key,value))
+        VALUES(?,?)
+        """,(key,value))
     connection.commit()
     connection.close()
 
