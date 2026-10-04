@@ -10,7 +10,8 @@ html {
 body {
     font-family:Arial, Helvetica, sans-serif;
     background-color: #060485;
-    color:palegreen; 
+    color:rgb(255, 10, 182); 
+    text-align: center;
 }
 .navbar {
     height: 70px;
@@ -19,6 +20,7 @@ body {
     align-items: center;            
     padding: 0p   , 50 px;
 position: sticky;
+
 top:0;
 z-index: 1000;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -28,6 +30,7 @@ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-size: 25px;
     font-weight: 800;
     letter-spacing: -1px;
+ 
     margin-right: 60px;
 }                      
 
@@ -43,8 +46,45 @@ font-weight: 600;
 transition: 0.2s;
 }
 nav a {
-    color: powderblue;
+    color: rgb(8, 5, 182);
 }
+.hero-h1 {
+    font-size: 200px;
+    text-align: center;
+    background: linear-gradient(to bottom, #d3f516, #ce0e0e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+#genre-h2 {
+    font-size: 20px;
+    text-align: center;
 
-
-
+    -webkit-text-fill-color: rgb(252, 251, 251);
+    font-weight: bold; 
+    text-shadow: 2px 3px 4px rgba(240, 82, 82, 0.8);
+}
+#adventure {
+    background: rgba(234, 250, 11, 0.863);
+    -webkit-text-fill-color: rgb(206, 4, 4);
+}
+.game-card {
+    text-align: center;
+}
+.play-erabreaker {
+    -webkit-text-fill-color:rgb(36, 67, 247);
+    font-size: bold;
+}
+.categories {
+    text-align: left;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
+}
+#players2 {
+background:  #4c02a1;
+-webkit-text-fill-color:#3d70fd;
+}
+.play-fireboy {
+    -webkit-text-fill-color: #fc0e0e;
+    font-size: bold;
+}
