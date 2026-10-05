@@ -1,10 +1,7 @@
-sorry forgot .logo {
+*{
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-html {
-    scroll-behavior: smooth;
 
 }
 body {
@@ -13,9 +10,9 @@ body {
     color:rgb(255, 10, 182); 
     text-align: center;
 }
+
+/* NAVBAR */
 .navbar {
-    height: 70px;
-    background-color:#9392a5;
     display: flex;
     align-items: center;            
     padding: 0p   , 50 px;
