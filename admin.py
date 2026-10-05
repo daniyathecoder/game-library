@@ -1,9 +1,16 @@
 from datetime import datetime
-from fastapi import(APIRouter,Depends,File,Form,HTTPException,UploadFile)
+from fastapi import(APIRouter,Depends,File,Form,HTTPException,UploadFile,Request)
 from database import get_database
 from auth import require_admin
 
 router = APIRouter(prefix = "/api/admin",tags= ["Admin"])
+@router.post("/login")
+def admin_login(request: Request,
+                username:str = Form(...),password:str=Form(...)):
+    print("LOGIN REceived")
+    print("Username:",username)
+    print("Password received:",bool(password))
+    return{"messgae": "LOgin request reached backend"}
 UPLOAD_DIRECTORY = "uploads/thumbnails"
 
 def create_slug(name:str):
